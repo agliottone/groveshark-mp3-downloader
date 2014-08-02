@@ -1,0 +1,56 @@
+<ion-view title="Groove MP3">
+<ion-nav-bar class="bar-dark">
+  </ion-nav-bar>
+<ion-nav-buttons side="right">
+    <button  ng-if="cordova" class="button button-icon icon ion-ios7-close-empty"></button>
+  </ion-nav-buttons>
+    <ion-content class="has-header padding">
+ <ion-refresher
+    pulling-text="Pull to randomize..."
+    on-refresh="random()"
+     ng-if="(visible.length)"
+     >
+  </ion-refresher>
+       <form ng-submit="search(q)">
+  <div class="list">
+  <label class="item item-input item-dark">
+    <input  id="q" ng-model="q" type="text" placeholder="Search">
+  </label>
+
+</form>
+
+
+
+
+<div ng-if="(searching) && (last)" class="item-dark item item-divider">
+    <i class="icon ion-ios7-reloading"></i> Searching for {{ last }} ...
+  </div>
+<div ng-if="(!(searching)) && (last) && (results.length==0)" class="item-dark item item-divider">
+    No Result found for {{ last }}
+  </div>
+  <div ng-if="(!(searching)) && (results.length>0)" class="item-dark item item-divider">
+    {{ visible.length }} of {{ results.length }} results for {{last }}
+  </div>
+  
+  <a ng-repeat="result in visible" ng-click="download(result, $index)" target="_blank" class="item item-dark  item-icon-right" ng-href="{{result.link}}">
+    <span class="f170">{{ result.title}}</span>
+    <p class="pp">{{ result.artist}}</p>
+    <i ng-if="(!(result.link)) && (!(result.download))" class="icon ion-ios7-reload orange" ></i>
+    <i ng-if="(result.link)" class="icon ion-ios7-arrow-thin-down green"></i>
+    <i ng-if="(!(result.link)) && result.download" class="icon ion-ios7-reloading orange"></i>
+  </a>
+
+ 
+
+</div>
+     <ion-infinite-scroll
+    on-infinite="load()"
+     ng-if="(visible.length) && (visible.length<results.length)"
+     icon="ion-loading-c"
+     >
+  </ion-infinite-scroll>
+  
+  
+    </ion-content>
+  </ion-view>
+</ion-nav-view>

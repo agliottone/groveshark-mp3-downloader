@@ -1,0 +1,42 @@
+
+.list a:nth-child(even) {
+    background-color: rgb(30, 30, 30)
+}
+
+#q{
+
+font-size: 155%;
+line-height: 155%;
+height: 100%;
+
+
+}
+body, ion-content{
+
+background-color: rgb(20, 20, 20);
+}
+
+.item, input{
+
+background-color:rgb(52, 52, 52); 
+color:white !important;
+}
+
+.item-divider{
+
+background-color:rgb(99, 99, 99) !important;
+}
+.orange{
+color:orange;
+}
+.green{
+color:rgb(78, 255, 0);
+}
+.pp{
+margin-bottom: 0;
+margin-top: 10px;
+color:rgb(196, 196, 196) !important;
+}
+.f170{
+font-size:170%
+}
